@@ -18,8 +18,8 @@ Choreo supports the following trigger types:
  - **GitHub**: To trigger an integration based on GitHub events and actions.
  - **Salesforce**: To trigger an integration based on topics in a Salesforce account. 
 
-## API Call
-An API call in Choreo integrations allows you to connect to and interact with an external service through your integration. You can use an API call to interact with generic protocol-based APIs and application-specific APIs.
+## Connection
+A connection in Choreo allows you to connect to and interact with an external service through your application. You can use a connection to interact with generic protocol-based APIs and application-specific APIs.
 
 Following are the connections you can use to interact with generic protocol-based APIs:
   
@@ -49,9 +49,9 @@ Choreo supports the following statements:
  - **If**: To perform a conditional check and evaluate whether a statement is true or false.   
  - **ForEach**: To iterate over a list of items to perform control flow. 
  - **While**: To iterate over a given condition to perform control flow. 
- - **Return**: To end the ongoing execution of an integration and return control to the caller.
+ - **Return**: To end the ongoing execution of a Choreo application and return control to the caller.
  - **Custom**: To specify a custom statement depending on your requirement.
 
 ## Expression Syntax
-The syntax to use when you want to input values for an expression when designing an integration using Choreo. [Refer to the syntax.](../references/ballerina-expression-syntax)
+The syntax to use when you want to input values for an expression when designing an integration using Choreo. [Refer to the syntax.](../references/choreo-expression-syntax)
 

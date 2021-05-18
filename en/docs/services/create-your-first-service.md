@@ -1,4 +1,4 @@
-# Create Your First Service
+# Create Your First Choreo Service
 
 To learn how to create a service, let's try a simple scenario. In this example, you are creating a service that consumes a public API that fetches the current active COVID-19 cases in a specified country, testing it, deploying it, and then observing its performance.
 
@@ -31,12 +31,12 @@ To create the service, follow the procedure below:
         | **Field**           | **Value**                    |
         |---------------------|------------------------------|
         | **Connection Name** | `httpEndpoint`               |
-        | **URL**             | `"https://api.covid19api.com"` |
+        | **URL**             | `https://api.covid19api.com` |
         
         Click **Save**.
         
-    3. Click the **+** icon below the HTTP API call you added. 
-    
+    3. Click the **+** icon below the HTTP API call you added.   
+
         ![Update Existing Connection](../assets/img/services/update-existing-connection.png)
         
     4. Click **API Calls**, and then click on the existing connection.
@@ -95,7 +95,7 @@ To create the service, follow the procedure below:
         Then click **Save**.
     
 9. To add a statement of the `Respond` type so that the result of the above processing is returned as a response, click the last **+** icon in your low-code diagram.
-
+   
     ![Add Respond Statement](../assets/img/services/add-respond-statement.png)
     
     In the **Respond Expression** field, enter `response`, and then click **Save**.
@@ -103,16 +103,18 @@ To create the service, follow the procedure below:
     
 Now you have completed designing your service. It looks as follows.
 
-![No Code View](../assets/img/services/choreo-service-low-code-view.png)
+- In the No Code View
 
-The code view looks as follows.
+   ![No Code View](../assets/img/services/choreo-service-low-code-view.png)
 
-![Code View](../assets/img/services/choreo-service-code-view.png)
+- In the Code View
+
+   ![Code View](../assets/img/services/choreo-service-code-view.png)
 
     
 To validate the service, click **Run & Test**. The following is logged to indicate that you have successfully started the service.
 
-![Service Started Log](../assets/img/services/service-started-notification.png)
+   ![Service Started Log](../assets/img/services/service-started-notification.png)
     
 Congratulations! You have successfully created your first service.
    
@@ -144,11 +146,11 @@ To deploy the `covid-stats` service, follow the procedure below:
 
 2. To deploy the service, click **Deploy**.
 
-    The status of the service changes to **Deployed**, and the following logs appear to indicate that the product is successfully deployed.    
+   The following message appears to indicate that you have successfully deployed the service.
+   
+    ![Successfully Deployed Notification](../assets/img/services/successfully-deployed-notification.png)
 
-    ![Deployment Logs](../assets/img/services/deployment-logs.png)
-
-3. Once the service is deployed, click on the **Go Live** tab below the low-code design view. Then click **://cURL** and copy the cURL command that is displayed.
+3. Once the service is deployed, click on the **Go Live** tab below the low code design view. Then click **://cURL** and copy the cURL command that is displayed.
 
     ![Get cURL command](../assets/img/services/copy-curl-command.png)
     
@@ -168,10 +170,7 @@ To observe the `covid-stats` service by checking the statistics generated as a r
 
 To observe the `covid-stats` service, click the **Observe** icon in the left panel.
 
-![Observe Icon](../assets/img/services/observe-icon.png)
+![Test Icon](../assets/img/services/observe-icon.png)
 
 The throughput and the latency of the `covid-stats` service are visualized as follows:
-
-![Visualization of Throughput and Latency](../assets/img/services/visualization-of-statistics.png)
-
-Congratulations! Now you have successfully created a service, tested it, deployed it, and observed its statistics.
+![Visualization of Throughput and Latency](../assets/img/services/successfully-deployed-notification.png)
