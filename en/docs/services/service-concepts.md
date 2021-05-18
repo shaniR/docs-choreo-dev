@@ -43,4 +43,8 @@ Choreo supports the following statements:
  - **Custom**: To specify a custom statement depending on your requirement.
 
 ## Expression Syntax
+<<<<<<< HEAD
 The syntax to use when you want to input values for an expression when designing a service using Choreo. [Refer to the syntax.](../references/choreo-expression-syntax)
+=======
+The syntax to use when you want to input values for an expression when designing a service using Choreo. [Refer to the syntax.](/references/ballerina-expression-syntax)
+>>>>>>> dev
