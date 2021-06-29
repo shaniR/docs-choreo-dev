@@ -5,6 +5,7 @@ body.cChoreoBody {
     background-size: 18px 18px;
 
     /* background: #F6F5FA; */
+    //Changed font family to match with Choreo marketing site.
     font-family: Montserrat, sans-serif;
 }
 .md-grid {
