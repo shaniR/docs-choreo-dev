@@ -1,61 +1,150 @@
 # Build Your First Integration
-Choreo allows you to efficiently build integrations by connecting APIs, events, and streams. Choreo also provides a comprehensive set of prebuilt integration templates that you can select and use depending on your requirement.
 
-This quick start guide walks you through the steps to quickly configure and try out the **GitHub New Issue to Google Sheets Row** integration in Choreo.
+Choreo allows you to efficiently build integrations by connecting APIs, events, and streams. Choreo also provides a comprehensive set of prebuilt integration templates that you can select from and use depending on your requirement.
 
-## Prerequisites:
-- A GitHub account.
-- A Google account.
-- In the Google account, create a blank spreadsheet named `Sample GitHub Integration` with its default worksheet named `Sheet1`. 
+This quick start guide walks you through the steps to quickly create an integration to get the current COVID-19 status in the United States. It will,
 
-## Step 1: Configure and start the integration
-Follow the procedure below to configure and start the **GitHub New Issue to Google Sheets Row** integration:
+  - Connect to the COVID-19 data API to get COVID-19 statistics.
+  - Connect to the World Bank data API to get population data.
+  - Send an email with the summary of statistics to a specified email address.
 
-1. Access the Choreo Console via [https://console.choreo.dev/](https://console.choreo.dev/).
-2. Sign in using either your GitHub or Google credentials.
-3. Go to the **Integrations** card and click **Get Started**. Now you are on the **Integrations** page, where you can start with a prebuilt integration or create your own.
-4. Go to the **GitHub New Issue to Google Sheets Row** card and click **Use This**.
-5. In the **Configurations** panel, fill in the details as follows to configure the integration:
-    1. Click **Connect to GitHub**.
-    2. In the authorization request page that opens, click **Authorize wso2** to allow WSO2 to access your GitHub account. 
-    3. In the GitHub access confirmation page that opens, enter your GitHub password and click **Confirm password**.
-    4. In the **GitHub Repository URL** field, select the repository for which you want to track new issues.
-    5. Click **Connect to Google Sheets**, and then click **Proceed**.
-    6. Select the Google account you want to use in the integration.
-    7. In the access request page that opens, click **Allow** to proceed with the selected Google account.
-    8. In the **Spreadsheet Name** field, select `Sample GitHub Integration`.
-    9. In the **Worksheet Name** field, enter `Sheet1`.
-6. Click **Save**.
- 
-       ![Save Configuration](../assets/img/integrations/configurations-panel.png)
+## Step 1: Create the integration
+
+Follow this procedure to create an integration from scratch:
+
+1. Sign in to the Choreo Console at [https://console.choreo.dev/](https://console.choreo.dev/).
+2. Go to the **Integrations** card and click **Get Started**. This takes you to the **Integrations** page.
+3. Click **Create**. This takes you to the **Create Integration** page.
+4. Go to the **Create with Choreo** card, enter `USACovidStatus` as the integration name, and then click **Create**.
+5. In the **Select Trigger** window, select **Manual**. This creates an integration that you can manually trigger.
+
+## Step 2: Get the COVID-19 data 
+
+Follow this procedure to connect to the COVID-19 API and retrieve data:
+
+1. Click **API Calls** and then select **COVID-19 API**.
+2. In the **COVID-19 API Connection** window, enter `covid19Client` as the **Connection Name** and click **Continue to Invoke API**.
+3. In the **Operation** drop-down list, select **Country Status** and enter details as follows in the other fields:
+
+    | **Field**                  | **Value**         |
+    |----------------------------|-------------------|
+    | **Country**                | `"USA"`           |
+    | **Response Variable Name** | `statusByCountry` |
+
+4. Click **Save**.
+5. Now let’s extract the total case count from the response and store it in a variable. Follow this procedure:
+
+    1. Click the last **+** icon in the low-code diagram.
+    2. Under **Statements**, select **Variable** and enter details as follows:
+
+        | **Field**      | **Value**                     |
+        |----------------|-------------------------------|
+        | **Type**       | `var`                         |
+        | **Name**       | `totalCases`                  |
+        | **Expression** | `statusByCountry?.cases ?: 0d`|
+
+    3. Click **Save**.
+
+## Step 3: Get the population data
+
+Follow this procedure to connect to the World Bank API and retrieve population data:
+
+1. Click the last **+** icon in the low-code diagram.
+2. Click **API Calls** and then select **World Bank API**.
+3. In the **World Bank API Connection** window, enter `worldBankClient` as the **Connection Name** and click **Continue to Invoke API**.
+4. In the **Operation** drop-down list, select **Get Country Population** and enter details as follows in the other fields:
+
+    | **Field**                  | **Value**            |
+    |----------------------------|----------------------|
+    | **Country Code**           | `"USA"`              |
+    | **Response Variable Name** | `populationByCountry`|
+
+5. Click **Save**.
+6. Now let’s extract the population value from the response, calculate the population in millions, and store it in a variable. Follow this procedure:
+
+    1. Click the last **+** icon in the low-code diagram.
+    2. Under **Statements**, select **Variable** and enter details as follows:
+
+        | **Field**      | **Value**                     |
+        |----------------|-------------------------------|
+        | **Type**       | `int`                         |
+        | **Name**       | `population`                  |
+        | **Expression** | `(populationByCountry[0]?.value ?: 0) / 1000000`|
+
+    3. Click **Save**.
+
+## Step 4: Calculate the total COVID-19 case count by population 
+
+Now let’s calculate the total COVID-19 case count per million in the population based on the COVID-19 statistics and the population data you have retrieved. Follow this procedure:
+
+1. Click the last **+** icon in the low-code diagram.
+2. Under **Statements**, select **Variable** and enter details as follows:
+
+    | **Field**      | **Value**                     |
+    |----------------|-------------------------------|
+    | **Type**       | `var`                         |
+    | **Name**       | `totalCasesPerMillion`        |
+    | **Expression** | `totalCases / population`     |
+
+3. Click **Save**.
+         
+## Step 5: Generate and send an email with summary statistics
+
+Follow this procedure to send an email with the summary of statistics to a specified email address:
+
+1. Click the last **+** icon in the low-code diagram.
+2. Under **Statements**, select **Variable** and enter details as follows:
+
+    | **Field**      | **Value**                     |
+    |----------------|-------------------------------|
+    | **Type**       | `string`                      |
+    | **Name**       | `mailBody`                    |
+    | **Expression** | `"Total Cases Per Million : " + totalCasesPerMillion.toString()`|
+
+3. Click **Save**.
+4. Click the last **+** icon in the low-code diagram.
+5. Click **API Calls** and then select **Mail by Choreo**.
+6. In the **Mail by Choreo Connection** window, enter details as follows: 
+
+    1. In the **Recipient** field, enter the email address to which you want to send the email. For example, `"test@gmail.com"`
+    2. In the **Subject** field, enter `"Total COVID-19 Cases in the USA"`
+    3. In the **Message Body** drop-down list, select `mailBody`.
+
+7. Click **Save**.
+
+Now you have successfully created and configured the integration. It looks as follows:
+
+- In the low-code view
+
+    ![Low-code view](../assets/img/integrations/integration-low-code-view.png){.cInlineImage-full}
+
+- In the code view    
+   ```ballerina
+    import wso2/choreo.sendemail;
+    import ballerinax/worldbank;
+    import ballerinax/covid19;
     
-    Now you have configured the integration, and you are ready to start it.
-
-7. Click **Start**. 
-   The following message indicates that the integration is starting:
-  
-       ![](../assets/img/integrations/integration-starting.png)
+    public function main() returns error? {
     
-    The following message indicates that the integration has started and is running:
+        covid19:Client covid19Client = check new ();
+        covid19:CovidCountry statusByCountry = check covid19Client->getStatusByCountry("USA");
+        var totalCases = statusByCountry?.cases ?: 0d;
+        worldbank:Client worldBankClient = check new ();
+        worldbank:CountryPopulation[] populationByCountry = check worldBankClient->getPopulationByCountry("USA");
+        int population = (populationByCountry[0]?.value ?: 0) / 1000000;
+        var totalCasesPerMillion = totalCases / population;
+        string mailBody = "Total Cases Per Million : " + totalCasesPerMillion.toString();
+        sendemail:Client sendemailEndpoint = check new ();
+        string sendEmailResponse = check sendemailEndpoint->sendEmail("rukshani@wso2.com", "Total COVID-19 Cases in the USA", 
+        mailBody);
+        }
+   ```
 
-       ![](../assets/img/integrations/integration-started.png)
+## Step 6: Try out the integration
 
-Now the **GitHub New Issue to Google Sheets Row** integration is successfully configured and running.
+1. Click **Run & Test**. This starts the integration and sends an email to the recipient you specified when configuring the integration.
+2. Go to the inbox of the email recipient and take a look at the COVID-19 statistics summary mail. 
 
-## Step 2: Try out the integration 
-Follow the procedure below to try out the integration:
+     ![Summary email](../assets/img/integrations/covid-summary-email.png){.cInlineImage-half}
 
-1. Go to the GitHub repository you specified when configuring the integration and create two new issues.
-2. Go to the Choreo Console and take a look at the **Execution History** of the configured integration.
- 
-       ![Execution History](../assets/img/integrations/execution-history.png)
-
-     You can see two executions. These are a result of creating new issues in the GitHub repository.
-
-3. Go to the `Sample GitHub Integration` spreadsheet in your Google account and take a look at `Sheet1`.
- 
-       ![](../assets/img/integrations/spreadsheet.png)
-
-     You can see two entries with details of the GitHub issues you created.
-
-Congratulations! Now you have successfully configured and tried out the **GitHub New Issue to Google Sheets Row** integration. 
+Congratulations! Now you have successfully created an integration from scratch and tried it out.

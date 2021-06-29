@@ -13,7 +13,6 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta name="docsearch:language" content="en" />
       <meta name="docsearch:version" content="1.0.0" />
-      <meta name="robots" content="noindex">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       {% if page and page.meta and page.meta.description %}
         <meta name="description" content="{{ config.site_description }}">
@@ -120,6 +119,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ 'assets/stylesheets/choreo-docs-theme.css' | url }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   </head>
   {% if palette.primary or palette.accent %}
     {% set primary = palette.primary | replace(" ", "-") | lower %}
@@ -195,43 +195,6 @@
   
   {% include "partials/breadcrumbs.html" %}
 </div>
-            {% if page.previous_page or page.next_page %}
-            <div class="md-footer-nav">
-              <nav class="md-footer-nav__inner md-grid">
-                {% if page.previous_page %}
-                  <a href="{{ page.previous_page.url | url }}" title="{{ page.previous_page.title }}" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-                    <div class="md-flex__cell md-flex__cell--shrink">
-                      <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-                    </div>
-                    <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-                      <span class="md-flex__ellipsis">
-                        <span class="md-footer-nav__direction">
-                          {{ lang.t("footer.previous") }}
-                        </span>
-                        {{ page.previous_page.title }}
-                      </span>
-                    </div>
-                  </a>
-                {% endif %}
-                {% if page.next_page %}
-                  <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title }}" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-                    <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-                      <span class="md-flex__ellipsis">
-                        <span class="md-footer-nav__direction">
-                          {{ lang.t("footer.next") }}
-                        </span>
-                        {{ page.next_page.title }}
-                      </span>
-                    </div>
-                    <div class="md-flex__cell md-flex__cell--shrink">
-                      <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-                    </div>
-                  </a>
-                {% endif %}
-              </nav>
-            </div>
-          {% endif %} 
-
             <article class="md-content__inner md-typeset">
               {% block content %}
                 {% if page.edit_url %}
@@ -260,6 +223,44 @@
                 {% include "partials/integrations/disqus.html" %}
               {% endblock %}
             </article>
+
+            {% if page.previous_page or page.next_page %}
+            <div class="md-footer-nav">
+              <nav class="md-footer-nav__inner md-grid">
+                {% if page.previous_page %}
+                <a href="{{ page.previous_page.url | url }}" title="{{ page.previous_page.title }}" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+                  <div class="md-flex__cell md-flex__cell--shrink">
+                    <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+                  </div>
+                  <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                      <span class="md-flex__ellipsis">
+                        <span class="md-footer-nav__direction">
+                          {{ lang.t("footer.previous") }}
+                        </span>
+                        {{ page.previous_page.title }}
+                      </span>
+                  </div>
+                </a>
+                {% endif %}
+                {% if page.next_page %}
+                <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title }}" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+                  <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                      <span class="md-flex__ellipsis">
+                        <span class="md-footer-nav__direction">
+                          {{ lang.t("footer.next") }}
+                        </span>
+                        {{ page.next_page.title }}
+                      </span>
+                  </div>
+                  <div class="md-flex__cell md-flex__cell--shrink">
+                    <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+                  </div>
+                </a>
+                {% endif %}
+              </nav>
+            </div>
+            {% endif %}
+
           </div>
         </div>
       </main>
@@ -295,8 +296,12 @@
       {% endfor %}
     {% endblock %}
   </body>
-  <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-  <script>docsearch(
-    )
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript"> docsearch({
+    apiKey: 'c4c6e2af60050262289542d4687eeb6c',
+    indexName: 'wso2_choreo',
+    inputSelector: ".md-search__input",
+    debug: false // Set debug to true if you want to inspect the dropdown
+  });
   </script>
 </html>

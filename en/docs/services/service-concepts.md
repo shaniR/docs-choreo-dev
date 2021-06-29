@@ -1,46 +1,29 @@
 # Service Concepts
 
-Before you start creating services with Choreo, there are basic concepts that you need to understand. This section walks you through all the service concepts you need to know.
+Choreo services allow you to create enterprise integration services incorporating complex business logic in a user-friendly low-code environment. Here are some basic concepts which will help you understand Choreo services as you develop your services in the [Choreo Console](https://console.choreo.dev/login/).
  
 ## Service
-A service in Choreo is a logical representation of a repeatable activity that has a specified outcome.
+A service in Choreo is an enterprise integration service exposed via a REST API. Choreo provides a comprehensive set of pre-built service samples for you to clone, edit, and try out, depending on your requirement. 
 
-## Service Sample
-A service sample in Choreo is a prebuilt service that performs a specific activity. Choreo provides a comprehensive set of service samples for you to clone, edit, and try out, depending on your requirement. 
+## API call
+An API call in Choreo allows you to connect to an external service through your Choreo integration. You can use an API call to interact with generic protocol-based APIs and application-specific APIs.
 
-## API Call
-An API call in Choreo services allows you to connect to and interact with an external service through your service. You can use an API call to interact with generic protocol-based APIs and application-specific APIs.
-
-Following are the connections you can use to interact with generic protocol-based APIs:
-  
- - **HTTP**: To interact with the HTTP API and communicate with an external endpoint via the HTTP protocol.   
- - **SMTP**: To send emails via the SMTP protocol.   
- - **POP3**: To receive emails from a POP3 email server.  
- - **IMAP**: To receive emails from any email server that supports the IMAP protocol. 
-
-Following are the connections you can use to interact with application-specific APIs:
-
- - **Twilio**: To interact with the Twilio API and perform operations such as sending messages, WhatsApp messages, and making voice calls.
- - **Slack**: To interact with the Slack API and perform required operations. 
- - **GitHub**: To interact with the GitHub API and  perform required operations. 
- - **Gmail**: To interact with the Gmail API and perform operations such as creating, modifying, and sending emails.
- - **Google Calendar**: To interact with the Google Calendar API and perform required operations.
- - **Google Sheets**: To interact with the Google Sheets API and perform operations such as creating and listing spreadsheets.
- - **Salesforce**: To interact with the Salesforce API and perform required operations. 
- - **NetSuite**: To interact with the NetSuite API and perform required operations. 
+{!reusable-components/choreo-connectors-list.md!}
 
 ## Statement
-A statement in Choreo services is a syntactic unit that specifies the action to be carried out in a Choreo service. 
+A statement is a collection of code fragments that specifies the actions to be carried out by a Choreo service.
 
 Choreo supports the following statements:
 
- - **Log**: To add an entry to the service log at runtime. You can either add an **Info** log or an **Error** log depending on your requirement.   
- - **Variable**: To declare a variable of a preferred type depending on your requirement.
- - **If**: To perform a conditional check and evaluate whether a statement is true or false.   
- - **ForEach**: To iterate over a list of items to perform control flow. 
- - **While**: To iterate over a given condition to perform control flow. 
- - **Respond**: To send a response back to the client. For example, to get an API to respond with an `HTTP_OK` indicating that the request was processed successfully.
- - **Custom**: To specify a custom statement depending on your requirement.
+ - **Log**: Logs an event with an information statement or an error that occurs in your service.    
+ - **Variable**: Declares a variable and a value of a preferred data type (`string`, `int`, etc.) to use later in the logical process of the service.
+ - **Data Mapping**: Allows to create variables by visually mapping one or more variables. For more information see [Data Mapping](../references/data-mapping.md).
+ - **If**: Performs conditional execution. 
+ - **ForEach**: Includes a control flow statement in your service to iterate over a list of items.
+ - **While**: Continuously executes a block of statements in a loop based on a given `boolean` condition. 
+ - **Respond**: Sends a specific response back to the client. For example, if the request was processed successfully,  responding to the client with an `HTTP_OK`.
+ - **Other**: Allows to write a single or a multiline code snippet in your service.
 
-## Expression Syntax
-The syntax to use when you want to input values for an expression when designing a service using Choreo. [Refer to the syntax.](../references/choreo-expression-syntax)
+## Ballerina expression syntax
+
+Choreo statements can also be composed of expressions. For the syntax to use when you want to input values for an expression while designing a service using Choreo, see [Ballerina Expression Syntax](../references/ballerina-expression-syntax.md).
