@@ -391,10 +391,10 @@ a.cChoreoDocsButtons.localLink {
     align-items: center;
     margin-left:50px;
   }
-  .topBarActions .actionLink .text {
+
+.topBarActions .actionLink .text {
       font-size: 14px; 
       white-space: nowrap;
       margin-left: 10px;
       color: #222228;
-  }
- 
+ }
