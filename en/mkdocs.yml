@@ -77,6 +77,7 @@ nav:
      - Root Cause Analysis: observability/root-cause-analysis.md
   - References:
      - Performance Analysis: references/performance-analysis.md
+     - Enterprise Login: references/enterprise-login.md
 # - Choreo DevOps: devops/overview.md
 # Extensions
 markdown_extensions:
