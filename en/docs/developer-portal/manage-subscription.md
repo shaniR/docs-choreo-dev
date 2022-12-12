@@ -13,8 +13,8 @@ Let's get started!
     ![Developer Portal](../assets/img/developer-portal/manage-applications/developer-portal.png){.cInlineImage-half}
 
 2. Click **Applications**. 
-3. Select and click on the application you want to subscribe to from the list. 
-4. Click **Subscriptions** from the left panel. 
+3. From the application list, find the application for which you want to subscribe the API. Open it by clicking it.
+4. In the left pane, click **Subscriptions**. 
 5. Click **+ Add APIs**. 
 6. Select the usage plan and click **Add** to subscribe to the API. You can subscribe to multiple APIs. You can change the usage plan after subscribing as well.
    ![Add APIs](../assets/img/developer-portal/manage-subscriptions/add-apis.png){.cInlineImage-small}
