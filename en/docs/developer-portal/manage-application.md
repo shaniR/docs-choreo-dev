@@ -14,8 +14,9 @@ Follow the steps below to create an application on Choreo:
 
     ![Developer Portal](../assets/img/developer-portal/manage-applications/developer-portal.png){.cInlineImage-half}
     
-2. Click **Applications** and click **+Create**.
-3. Enter the application name and select the usage policy. You can optionally also add the application description. Click **Create**.
+2. Click **Applications** and then, click **+Create**.
+3. Enter the application name and select the usage policy. Optionally, add the application description. 
+4. Click **Create**.
 
 You are redirected to the application overview page. You can view the throttling tier, the token type, workflow status, and the application owner of the API. 
 
@@ -46,9 +47,9 @@ Token Exchange grant type requires you to pass a subject_token as a parameter in
         {"access_token":"<access__token>","refresh_token":"<refresh_token>","scope":"openid","id_token":"<id_token>","token_type":"Bearer","expires_in":3600}
     ```
 
-3. Sign in to Choreo Developer Portal at [https://devportal.choreo.dev](https://devportal.choreo.dev). Alternatively, click the Developer Portal link on the Choreo console header. 
+3. Sign in to Choreo Developer Portal at [https://devportal.choreo.dev](https://devportal.choreo.dev). Alternatively, click the Developer Portal link on the Choreo Console header. 
 4. Click **Applications**.
-5. Click **OAuth 2.0 Tokens** on the left pane.
+5. In the left pane, click **OAuth 2.0 Tokens**.
 6. Expand the **Advanced Configurations** section and review the options. 
 
     ![Advanced Configurations](../assets/img/developer-portal/manage-applications/advanced-configurations.png){.cInlineImage-half}
@@ -90,7 +91,7 @@ You can generate an access token for testing using the Choreo UI by following th
 
 1. Sign in to Choreo Developer Portal at [https://devportal.choreo.dev](https://devportal.choreo.dev). Alternatively, click the Developer Portal link on the Choreo Console header. 
 2. Click **Applications**.
-3. Click **OAuth 2.0 Tokens** on the left pane.
+3. In the left pane, click **OAuth 2.0 Tokens**.
 4. Expand the **Advanced Configurations** section and review the options. 
 
     ![Advanced Configurations](../assets/img/developer-portal/manage-applications/advanced-configurations.png){.cInlineImage-half}
@@ -108,7 +109,7 @@ You can generate an access token for testing using the Choreo UI by following th
     !!! info
         You can use the UI to generate a test token using the consumer key and consumer secret for the application, only for test purposes. We strongly recommend **NOT** using this token in your production environment.
 
-8. Click **:// CURL** to copy the cURL command template for generating the access token. You can generate an API access token by adding the consumer key and consumer secret to the URL and invoking the token endpoint.
+6. Click **:// CURL** to copy the cURL command template for generating the access token. You can generate an API access token by adding the consumer key and consumer secret to the URL and invoking the token endpoint.
   
     ![cURL command](../assets/img/developer-portal/manage-applications/curl-command.png){.cInlineImage-half}
 
@@ -174,7 +175,7 @@ In the case of theft, security violation, or precaution, Choreo allows an admin 
     ![Developer Portal](../assets/img/developer-portal/manage-applications/developer-portal.png){.cInlineImage-half}
 
 2. Click **Applications**.
-3. Click **OAuth 2.0 Tokens** on the left navigation menu.
+3. In the left pane, click **OAuth 2.0 Tokens**.
     You will find the **Consumer Key** (client ID), **Consumer Secret** (client secret), **Token Endpoint**, and **Revoke Endpoint** listed here. You can use these values to revoke the access token. 
 
 The parameters required to invoke the revoke token endpoint are as follows:
