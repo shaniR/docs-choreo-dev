@@ -119,7 +119,9 @@ nav:
       - API Rate Limiting: api-management/api-rate-limiting.md
   - Monitoring and Insights:
       - Observability Overview: monitoring-and-insights/observability-overview.md
-      - View API Insights: monitoring-and-insights/view-api-insights.md
+      - Runtime Insights:
+          - View API Insights: monitoring-and-insights/runtime-insights/view-api-insights.md
+          - Choreo Insights API: monitoring-and-insights/runtime-insights/choreo-insights-api.md
       - Generate Custom Reports: monitoring-and-insights/generate-custom-reports.md
       - Alerts:
           - Configure Alerts: monitoring-and-insights/alerts/configure-alerts.md
@@ -246,9 +248,10 @@ plugins:
           'observe-and-analyze/observe/observability-overview.md': 'https://wso2.com/choreo/docs/monitoring-and-insights/observability-overview/'
           'observe-and-analyze/observe/root-cause-analysis.md': 'https://wso2.com/choreo/docs'
           'observe-and-analyze/analyze/view-api-insights.md': 'https://wso2.com/choreo/docs/monitoring-and-insights/view-api-insights/'
+          'monitoring-and-insights/view-api-insights.md': 'https://wso2.com/choreo/docs/monitoring-and-insights/runtime-insights/view-api-insights/'
           'observe-and-analyze/analyze/generate-custom-reports.md': 'https://wso2.com/choreo/docs/monitoring-and-insights/generate-custom-reports/'
           'observe-and-analyze/analyze/configure-alerts.md': 'https://wso2.com/choreo/docs/alerts/configure-alerts/'
-          'observe-and-analyze/analyze/choreo-insights-api.md': 'https://wso2.com/choreo/docs'
+          'observe-and-analyze/analyze/choreo-insights-api.md': 'https://wso2.com/choreo/docs/monitoring-and-insights/runtime-insights/choreo-insights-api/'
           'observe-and-analyze/analyze/programmatic-access-choreo-insights-api.md': 'https://wso2.com/choreo/docs'
           'observe-and-analyze/analyze/dora-metrics/configure-cio-dashboard.md': 'https://wso2.com/choreo/docs'
           'observe-and-analyze/analyze/dora-metrics/view-dora-metrics.md': 'https://wso2.com/choreo/docs'
